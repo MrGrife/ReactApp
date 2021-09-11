@@ -1,0 +1,28 @@
+.items-list {
+    width: 100%;
+    font-size: 20px;
+}
+
+.item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.item-content i {
+    margin: 10px;
+}
+
+.red {
+    cursor: pointer;
+    color: red;
+}
+
+.item-content i:first-child {
+    cursor: pointer;
+    color: blue
+}
