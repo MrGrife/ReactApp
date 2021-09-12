@@ -1,33 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4404280-3072-409c-8e73-eef7c7549ad4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/buttonComponent/MyButton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/controlPanel/ControlPanel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/controlPanel/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/hooks/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/inputComponent/MyInput.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/item/Item.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/item/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/itemlist/ItemList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/itemlist/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/pages/item.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/popupWindow/PopupWindow.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/popupWindow/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/reducer/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/searchPanel/SearchPanel.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/store/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    <list default="true" id="ef83f6cd-35ae-444a-b846-79c7b5fa363c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
