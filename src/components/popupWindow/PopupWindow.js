@@ -1,41 +1,33 @@
 import React, { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Button, Form } from 'antd';
+import { Button, Form, Input } from 'antd';
 import { PoweroffOutlined } from '@ant-design/icons';
 
 import "./style.css"
 
 const PopupWindow = ({modalActive, setModalActive}) => {
     const dispatch = useDispatch()
-    const [title, setTitle] = useState("")
     const [loading, setLoading] = useState(false)
-    const [description, setDescription] = useState("")
-    const [error, setError] = useState(false)
-    const titleRef = useRef()
-    const descriptionRef = useRef()
+    const buttonForm = useRef()
 
-    const sendData = () => {
-        if (title.replace(/\s/g, '').length === 0 || description.replace(/\s/g, '').length === 0) {
-            setError(true)
-        } else {
-            setLoading(true)
+    const [form] = Form.useForm()
+
+    const sendData = (data) => {
+        setLoading(true)
             setTimeout(() => {
                 setLoading(false)
                 const newItem = {
-                    title: title,
-                    description: description
+                    title: data.title,
+                    description: data.description
                 }
                 dispatch({ type: "POST", newItem: newItem })
-                setTitle("")
-                setDescription("")
                 setModalActive(false)
             }, 1000)
-        }
     }
 
-    const pressKey = (e) => {
+    const handleKeyUp = (e) => {
         if(e.keyCode === 13) {
-            sendData()
+            buttonForm.current.click()
         }
     }
 
@@ -46,33 +38,38 @@ const PopupWindow = ({modalActive, setModalActive}) => {
                     ✘
                 </div>
                 <Form
+                    form={form}
 
+                    onFinish={sendData}
+                    onKeyUp={handleKeyUp}
+                    autoComplete="off"
                     layout="vertical"
                 >
-                    <Form.Item label="Title">
-                        <input
-                            ref={titleRef}
-                            className={!error ? "" : "error"}
-                            onKeyDown={(e) => pressKey(e)}
-                            value={title}
-                            onInput={(e) => setTitle(e.target.value)} />
+                    <Form.Item
+                        label="Title"
+                        name="title"
+                        rules={[
+                            {
+                                required: true,
+                                message: "Please input title!"
+                            }
+                        ]}
+                    >
+                        <Input />
                     </Form.Item>
                     <Form.Item
+                        name="description"
                         label="Description"
                     >
-                        <input
-                            ref={descriptionRef}
-                            className={!error ? "" : "error"}
-                            onKeyDown={(e) => pressKey(e)}
-                            value={description}
-                            onInput={(e) => setDescription(e.target.value)} />
+                        <Input />
                     </Form.Item>
                     <Form.Item>
                         <Button
+                            htmlType="submit"
+                            ref={buttonForm}
                             style={{background: "#26EF69", border: "#26EF69"}}
                             loading={loading}
                             icon={<PoweroffOutlined />}
-                            onClick={sendData}
                             ghost>
                             ADD POST
                         </Button>
