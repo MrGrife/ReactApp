@@ -10,7 +10,6 @@ const Item = ({value, idELem, id}) => {
     const [edit, setEdit] = useState(false)
     const { itemList } = useSelector(state => state)
 
-    console.log("hello");
     const removeItem = () => {
         const idx = itemList.findIndex((item) => item.id === idELem)
         

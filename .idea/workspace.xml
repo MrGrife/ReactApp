@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef83f6cd-35ae-444a-b846-79c7b5fa363c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/hooks/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/hooks/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/item/Item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/item/Item.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/itemlist/ItemList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/itemlist/ItemList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,12 +37,18 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.general" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="Node.js.PopupWindow.js">
+  <component name="RunManager" selected="Node.js.index.js">
     <configuration name="PopupWindow.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/components/popupWindow/PopupWindow.js" working-dir="$PROJECT_DIR$/src/components/popupWindow">
+      <method v="2" />
+    </configuration>
+    <configuration name="index.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/index.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
@@ -53,6 +63,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.index.js" />
         <item itemvalue="npm.start" />
         <item itemvalue="Node.js.PopupWindow.js" />
       </list>
@@ -61,7 +72,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d4404280-3072-409c-8e73-eef7c7549ad4" name="Changes" comment="" />
+      <changelist id="ef83f6cd-35ae-444a-b846-79c7b5fa363c" name="Changes" comment="" />
       <created>1631365835318</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -69,6 +80,9 @@
       <workItem from="1631365839212" duration="3035000" />
       <workItem from="1631372412787" duration="1780000" />
       <workItem from="1631395202468" duration="2235000" />
+      <workItem from="1631632485970" duration="2240000" />
+      <workItem from="1631656709237" duration="2121000" />
+      <workItem from="1631700477991" duration="2476000" />
     </task>
     <servers />
   </component>
@@ -96,5 +110,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

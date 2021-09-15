@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import Item from "../item/Item"
 import { useFilter } from '../hooks'
