@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useInput } from '../hooks'
+import NavLink from "../navItem/navItem"
 
 import "./style.css"
 
@@ -50,9 +51,12 @@ const Item = ({value, idELem, id}) => {
 
     return (
         <div className="item-content">
-            {
-                edit ? <input style={{width: "100%"}} onInput={onInput} id="item-input" type="text" defaultValue={value.title} /> : <div>{value.title}</div>
-            }
+            <div className="main-item-content">
+                {
+                    edit ? <input style={{width: "100%"}} onInput={onInput} id="item-input" type="text" defaultValue={value.title} /> : <div>{value.title}</div>
+                }
+                { value.description && <NavLink itemId={id} /> }
+            </div>
             <div className="icons">
                 <ChangeElements/>
                 <i onClick={removeItem} className="red fas fa-trash-alt"></i>

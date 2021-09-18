@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Button, Form, Input } from 'antd';
 import { PoweroffOutlined } from '@ant-design/icons';
+import { CSSTransition } from 'react-transition-group';
 
 import "./style.css"
 
@@ -9,11 +10,10 @@ const PopupWindow = ({modalActive, setModalActive}) => {
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
     const buttonForm = useRef()
-
     const [form] = Form.useForm()
 
     const sendData = (data) => {
-        setLoading(true)
+      setLoading(true)
             setTimeout(() => {
                 setLoading(false)
                 const newItem = {
@@ -22,6 +22,7 @@ const PopupWindow = ({modalActive, setModalActive}) => {
                 }
                 dispatch({ type: "POST", newItem: newItem })
                 setModalActive(false)
+                form.resetFields()
             }, 1000)
     }
 
@@ -32,6 +33,12 @@ const PopupWindow = ({modalActive, setModalActive}) => {
     }
 
     return (
+      <CSSTransition
+        in={modalActive}
+        timeout={500}
+        classNames="popup-container"
+        unmountOnExit
+      >
         <div className="popup-container" onMouseDown={() => setModalActive(false)}>
             <div className="popup-window" onMouseDown={e => e.stopPropagation()}>
                 <div className="exit" onClick={() => setModalActive(false)}>
@@ -39,7 +46,6 @@ const PopupWindow = ({modalActive, setModalActive}) => {
                 </div>
                 <Form
                     form={form}
-
                     onFinish={sendData}
                     onKeyUp={handleKeyUp}
                     autoComplete="off"
@@ -77,6 +83,7 @@ const PopupWindow = ({modalActive, setModalActive}) => {
                 </Form>
             </div>
         </div>
+      </CSSTransition>
     )
 }
 

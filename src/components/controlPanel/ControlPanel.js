@@ -6,13 +6,12 @@ import "./style.css"
 
 const ControlPanel = () => {
     const [modalActive, setModalActive] = useState(false)
-    
     return (
         <header>
             <MyButton onClick={() => setModalActive(true)}>
                 CREATE NEW POST
             </MyButton>
-            {modalActive && <PopupWindow modalActive={modalActive} setModalActive={setModalActive} />}
+            <PopupWindow classNames="popup-container" modalActive={modalActive} setModalActive={setModalActive} />
         </header>
     )
 }

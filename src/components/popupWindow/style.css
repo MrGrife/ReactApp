@@ -17,6 +17,8 @@
     width: 500px;
     height: 500px;
     padding: 50px;
+    transform: scale(0);
+    opacity: 0;
 }
 
 .exit {
@@ -36,4 +38,44 @@
 
 .error {
     border: 1px solid red;
+}
+
+/* Transition */
+
+.popup-container-enter {
+    background: rgba(0, 0, 0, 0);
+}
+.popup-container-enter-active {
+    background: rgba(0, 0, 0, 0.6);
+    transition: background 500ms;
+}
+.popup-container-exit {
+    background: rgba(0, 0, 0, 0.6);
+}
+.popup-container-exit-active {
+    background: rgba(0, 0, 0, 0);
+    transition: background 500ms;
+}
+
+popup-container-enter .popup-window {
+    transform: scale(0.75);
+    opacity: 0;
+}
+.popup-container-enter-active .popup-window {
+    transform: scale(1);
+    opacity: 1;
+    transition: all 500ms;
+}
+.popup-container-enter-done .popup-window {
+    transform: scale(1);
+    opacity: 1;
+}
+.popup-container-exit .popup-window {
+    transform: scale(1);
+    opacity: 1;
+}
+.popup-container-exit-active .popup-window {
+    transform: scale(0.75);
+    opacity: 0;
+    transition: all 500ms;
 }

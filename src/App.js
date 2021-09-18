@@ -9,9 +9,9 @@ import "./App.css"
 const App = () => {
     return (
         <div className="container">
-            <ControlPanel/>
-            <SearchPanel/>
-            <ItemList/>
+          <ControlPanel/>
+          <SearchPanel/>
+          <ItemList/>
         </div>
     )
 }
