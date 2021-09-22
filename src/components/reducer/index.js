@@ -11,12 +11,11 @@ const data = {
       title: "React + Redux",
       id: randomId()
     }, {
-      title: "Backend developers aren't humans...",
+      title: "Backend...",
       id: randomId()
     }
   ],
-  filterItemList: [],
-  term: ""
+  filterItemList: []
 }
 
 const reducer = (state = data, action) => {
@@ -52,8 +51,7 @@ const reducer = (state = data, action) => {
       case "FILTER":
         return {
           ...state,
-          filterItemList: action.filteredArray,
-          term: action.inputValue
+          filterItemList: action.filteredArray
         }
       default:
         return {

@@ -6,14 +6,15 @@ import { Button } from 'antd';
 import "./post.css"
 
 const Post = ({id}) => {
-  const itemList = useSelector(state => state.itemList[id])
+  const filterItemList = useSelector(state => state.filterItemList[id])
+  
   return (
     <div className="post-item">
       <div className="title">
-        {itemList.title}
+        {filterItemList.title}
       </div>
       <div className="description">
-        {itemList.description}
+        {filterItemList.description}
         <Button className="post-item_button" type="primary">
           <Link to="/">Go back</Link>
         </Button>
