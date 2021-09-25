@@ -14,7 +14,7 @@ const Post = ({id}) => {
         {filterItemList.title}
       </div>
       <div className="description">
-        {filterItemList.description}
+        {filterItemList.body}
         <Button className="post-item_button" type="primary">
           <Link to="/">Go back</Link>
         </Button>

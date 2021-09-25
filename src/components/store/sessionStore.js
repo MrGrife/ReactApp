@@ -2,7 +2,7 @@ export const loadState = () => {
   try {
     const serializedState = sessionStorage.getItem('state');
 
-    if (serializedState === null) {
+    if (!serializedState) {
       return undefined;
     }
 
@@ -10,7 +10,7 @@ export const loadState = () => {
   } catch (error) {
     return undefined;
   }
-};
+}
 
 export const saveState = (state) => {
   try {
@@ -19,4 +19,4 @@ export const saveState = (state) => {
   } catch {
     console.log("error")
   }
-};
+}

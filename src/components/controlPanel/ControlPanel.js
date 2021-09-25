@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import MyButton from "../buttonComponent/MyButton"
 import PopupWindow from '../popupWindow/PopupWindow'
 
@@ -16,4 +16,4 @@ const ControlPanel = () => {
     )
 }
 
-export default ControlPanel
+export default memo(ControlPanel)

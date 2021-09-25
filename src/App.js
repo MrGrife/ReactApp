@@ -1,15 +1,21 @@
-import React from 'react'
-import { useSelector } from "react-redux"
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from "react-redux"
 import ControlPanel from './components/controlPanel/ControlPanel'
 import ItemList from "./components/itemlist/ItemList"
 import SearchPanel from './components/searchPanel/SearchPanel'
+import getPosts from './services/services'
 
 import 'antd/dist/antd.css'
 import "./App.css"
 
 const App = () => {
     const filteredItemList = useSelector(state => state.filterItemList)
-    console.log(filteredItemList);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(getPosts())
+    }, [dispatch])
+
     return (
         <div className="container">
           <ControlPanel/>

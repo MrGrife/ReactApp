@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import MyInput from '../inputComponent/MyInput'
 import { useInput } from '../hooks'
@@ -8,7 +8,7 @@ const SearchPanel = () => {
     const { inputValue, onInput } = useInput()
     const { itemList } = useSelector(state => state)
 
-    const sortedPost = useCallback(() => {
+    const sortedPost = useMemo(() => {
         if(inputValue) {
             return itemList.filter(item => item.title.toLowerCase().includes(inputValue.toLowerCase()))
         }
@@ -17,8 +17,8 @@ const SearchPanel = () => {
     }, [itemList, inputValue])
 
     useEffect(() => {
-        dispatch({type: "FILTER", filteredArray: sortedPost()})
-    }, [inputValue, itemList, dispatch, sortedPost])
+        dispatch({type: "FILTER", filteredArray: sortedPost})
+    }, [inputValue, sortedPost, dispatch, itemList])
 
     return (
         <div style={{display: "flex"}}>

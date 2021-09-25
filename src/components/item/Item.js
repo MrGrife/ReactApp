@@ -6,6 +6,7 @@ import NavLink from "../navItem/navItem"
 import "./style.css"
 
 const Item = ({value, idELem, id}) => {
+    // console.log(id);
     const dispatch = useDispatch()
     const { inputValue, onInput, setValue } = useInput()
     const [edit, setEdit] = useState(false)
@@ -55,7 +56,7 @@ const Item = ({value, idELem, id}) => {
                 {
                     edit ? <input style={{width: "100%"}} onInput={onInput} id="item-input" type="text" defaultValue={value.title} /> : <div>{value.title}</div>
                 }
-                { value.description && <NavLink itemId={id} /> }
+                { value.body && <NavLink itemId={id} /> }
             </div>
             <div className="icons">
                 <ChangeElements/>

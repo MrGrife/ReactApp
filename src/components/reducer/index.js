@@ -3,23 +3,17 @@ const randomId = () => {
 }
 
 const data = {
-  itemList: [{
-      title: "I'm learning React",
-      id: randomId()
-    },
-    {
-      title: "React + Redux",
-      id: randomId()
-    }, {
-      title: "Backend...",
-      id: randomId()
-    }
-  ],
+  itemList: [],
   filterItemList: []
 }
 
 const reducer = (state = data, action) => {
   switch (action.type) {
+    case "GET_POSTS":
+      return {
+        ...state,
+        itemList: [...action.itemList]
+      }
     case "POST":
       return {
         ...state,
