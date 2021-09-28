@@ -4,7 +4,15 @@ import Item from "../item/Item"
 
 import "./style.css"
 
-const ItemList = ({posts}) => {
+const ItemList = ({ posts, error }) => {
+    if(error) {
+        return <h1>ERROR</h1>
+    }
+
+    if(!posts.length) {
+        return <h1 style={{display: "flex", justifyContent: "center", marginTop: "50px"}}>Posts not found</h1>
+    }
+
     return (
         <div className="items-list">
             <div>

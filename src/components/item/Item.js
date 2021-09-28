@@ -6,7 +6,6 @@ import NavLink from "../navItem/navItem"
 import "./style.css"
 
 const Item = ({value, idELem, id}) => {
-    // console.log(id);
     const dispatch = useDispatch()
     const { inputValue, onInput, setValue } = useInput()
     const [edit, setEdit] = useState(false)
@@ -30,7 +29,7 @@ const Item = ({value, idELem, id}) => {
 
     const changeItemValue = () => {
         if(Boolean(inputValue)) {
-            dispatch({type: "CHANGE_VALUE_ELEMENT", index: id, value: inputValue})
+            dispatch({type: "CHANGE_VALUE_ELEMENT", index: idELem, value: inputValue})
         } else {
             removeItem()
         }

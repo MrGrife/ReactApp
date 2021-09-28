@@ -1,10 +1,6 @@
-const randomId = () => {
-  return Math.floor(Math.random() * 1000)
-}
-
 const data = {
   itemList: [],
-  filterItemList: []
+  error: false
 }
 
 const reducer = (state = data, action) => {
@@ -17,7 +13,7 @@ const reducer = (state = data, action) => {
     case "POST":
       return {
         ...state,
-        itemList: [...state.itemList, {...action.newItem, id: randomId()}]
+        itemList: [...state.itemList, {...action.newItem}]
       }
       case "DELETE":
         return {
@@ -25,27 +21,18 @@ const reducer = (state = data, action) => {
           itemList: action.newItemList
         }
       case "CHANGE_VALUE_ELEMENT":
-        const itemInd = state.itemList.find((item, id) => action.index === id)
-        const newItem = {
-          ...itemInd,
-          title: action.value
-        }
-
-        const first = state.itemList.slice(0, action.index)
-        const second = state.itemList.slice(action.index + 1)
+        const newItemsArray = state.itemList.map(item => item.id === action.index ? {...item, title: action.value} : item )
 
         return {
           ...state,
           itemList: [
-            ...first,
-            newItem,
-            ...second
+            ...newItemsArray
           ]
         }
-      case "FILTER":
+      case "ERROR":
         return {
           ...state,
-          filterItemList: action.filteredArray
+          error: true
         }
       default:
         return {

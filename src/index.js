@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import Post from "./components/pages/Post"
 import ErrorPage from "./components/pages/ErrorPage"
 
+
 ReactDOM.render(
     <Provider store={store}>
       <Router>

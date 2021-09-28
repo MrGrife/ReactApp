@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Button, Form, Input } from 'antd';
 import { PoweroffOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
+import { postData } from '../../services/services'
 
 import "./style.css"
 
@@ -13,17 +14,13 @@ const PopupWindow = ({modalActive, setModalActive}) => {
     const [form] = Form.useForm()
 
     const sendData = (data) => {
-      setLoading(true)
-            setTimeout(() => {
-                setLoading(false)
-                const newItem = {
-                    title: data.title,
-                    description: data.description
-                }
-                dispatch({ type: "POST", newItem: newItem })
-                setModalActive(false)
-                form.resetFields()
-            }, 1000)
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+            dispatch(postData(data.title, data.description))
+            setModalActive(false)
+            form.resetFields()
+        }, 1000)
     }
 
     const handleKeyUp = (e) => {

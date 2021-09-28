@@ -1,31 +1,13 @@
-import React, { useEffect, useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
 import MyInput from '../inputComponent/MyInput'
-import { useInput } from '../hooks'
 
-const SearchPanel = () => {
-    const dispatch = useDispatch()
-    const { inputValue, onInput } = useInput()
-    const { itemList } = useSelector(state => state)
-
-    const sortedPost = useMemo(() => {
-        if(inputValue) {
-            return itemList.filter(item => item.title.toLowerCase().includes(inputValue.toLowerCase()))
-        }
-
-        return itemList
-    }, [itemList, inputValue])
-
-    useEffect(() => {
-        dispatch({type: "FILTER", filteredArray: sortedPost})
-    }, [inputValue, sortedPost, dispatch, itemList])
-
+const SearchPanel = ({ value, setValue }) => {
     return (
         <div style={{display: "flex"}}>
             <MyInput
                 className="styled-input"
-                value={inputValue}
-                onInput={onInput}
+                value={value}
+                onInput={(e) => setValue(e.target.value)}
                 placeholder="search..."
                 />
         </div>
