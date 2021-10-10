@@ -1,19 +1,31 @@
+const randomId = () => {
+  return Math.floor(Math.random() * 1000)
+}
+
 const data = {
+  totalPosts: 0,
   itemList: [],
-  error: false
+  error: false,
+  loading: true
 }
 
 const reducer = (state = data, action) => {
   switch (action.type) {
+    case "GET_ALL_POSTS":
+      return {
+        ...state,
+        totalPosts: action.totalPosts
+      }
     case "GET_POSTS":
       return {
         ...state,
-        itemList: [...action.itemList]
+        itemList: [...state.itemList, ...action.response],
+        loading: true
       }
     case "POST":
       return {
         ...state,
-        itemList: [...state.itemList, {...action.newItem}]
+        itemList: [{...action.newItem, id: randomId()}, ...state.itemList]
       }
       case "DELETE":
         return {
@@ -22,7 +34,7 @@ const reducer = (state = data, action) => {
         }
       case "CHANGE_VALUE_ELEMENT":
         const newItemsArray = state.itemList.map(item => item.id === action.index ? {...item, title: action.value} : item )
-
+       
         return {
           ...state,
           itemList: [
@@ -33,6 +45,11 @@ const reducer = (state = data, action) => {
         return {
           ...state,
           error: true
+        }
+      case "LOADING":
+        return {
+          ...state,
+          loading: !state.loading
         }
       default:
         return {

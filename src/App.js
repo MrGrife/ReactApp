@@ -1,41 +1,49 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import { useSelector, useDispatch } from "react-redux"
 import ControlPanel from './components/controlPanel/ControlPanel'
 import ItemList from "./components/itemlist/ItemList"
 import SearchPanel from './components/searchPanel/SearchPanel'
-import { getPosts } from './services/services'
-import Loader from './components/loader/loader'
+import { getPosts, getAllPosts } from './services/services'
+import Loader from './components/UI/loader/loader'
+import useFilter from './hooks/useFilter'
+import useObserver from './hooks/useObserver'
+import pagesCounter from "./utils/pagesCounter"
 
 import 'antd/dist/antd.css'
 import "./App.css"
 
 const App = () => {
-    const { itemList, error } = useSelector(state => state)
-    const [loading, setLoading] = useState(true)
+    const { totalPosts, itemList, error, loading } = useSelector(state => state)
     const [ value, setValue ] = useState('')
+    const [ page, setPage ] = useState(1)
+    const sortedPost = useFilter(itemList, value)
     const dispatch = useDispatch()
+    const lastElem = useRef()
 
     useEffect(() => {
-      dispatch(getPosts())
-      setLoading(false)
+      dispatch(getAllPosts())
     }, [dispatch])
 
-    const sortedPost = useMemo(() => {
-        if(value) {
-            return itemList.filter(item => item.title.toLowerCase().includes(value.toLowerCase()))
-        }
+    useEffect(() => {
+      dispatch(getPosts(page))
+    }, [dispatch, page])
 
-        return itemList
-    }, [value, itemList])
-
+    useObserver(lastElem, itemList.length < totalPosts, loading, useCallback(() => {
+      return setPage(page => page + 1)
+    }, []))
     
+
     return (
         <div className="container">
           <ControlPanel/>
           <SearchPanel value={value} setValue={setValue} />
           {
-            loading ? <Loader/> : <ItemList posts={sortedPost} error={error} />
+            <ItemList posts={sortedPost} error={error} />
           }
+          {
+            loading && <Loader/>
+          }
+          <div ref={lastElem} style={{height: "40px"}} />
         </div>
     )
 }

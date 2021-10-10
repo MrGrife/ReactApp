@@ -15,12 +15,10 @@ const PopupWindow = ({modalActive, setModalActive}) => {
 
     const sendData = (data) => {
         setLoading(true)
-        setTimeout(() => {
-            setLoading(false)
-            dispatch(postData(data.title, data.description))
-            setModalActive(false)
-            form.resetFields()
-        }, 1000)
+        dispatch(postData(data.title, data.description))
+        setModalActive(false)
+        form.resetFields()
+        setLoading(false)
     }
 
     const handleKeyUp = (e) => {

@@ -1,5 +1,5 @@
 import React from 'react'
-import MyInput from '../inputComponent/MyInput'
+import MyInput from '../UI/inputComponent/MyInput'
 
 const SearchPanel = ({ value, setValue }) => {
     return (

@@ -1,25 +1,20 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useInput } from '../hooks'
-import NavLink from "../navItem/navItem"
+import useInput from '../../hooks/useInput'
+import NavLink from "../UI/navItem/navItem"
+import { changePost } from "../../services/services"
+import { deletePost } from '../../services/services'
 
 import "./style.css"
 
-const Item = ({value, idELem, id}) => {
+const Item = ({value, idELem}) => {
     const dispatch = useDispatch()
     const { inputValue, onInput, setValue } = useInput()
     const [edit, setEdit] = useState(false)
     const { itemList } = useSelector(state => state)
 
     const removeItem = () => {
-        const idx = itemList.findIndex((item) => item.id === idELem)
-        
-        const newArray = [
-            ...itemList.slice(0, idx),
-            ...itemList.slice(idx + 1)
-        ]
-
-        dispatch({type: "DELETE", newItemList: newArray})
+        dispatch(deletePost(itemList, idELem))
     }
 
     const changeItem = () => {
@@ -29,7 +24,7 @@ const Item = ({value, idELem, id}) => {
 
     const changeItemValue = () => {
         if(Boolean(inputValue)) {
-            dispatch({type: "CHANGE_VALUE_ELEMENT", index: idELem, value: inputValue})
+            dispatch(changePost(idELem, inputValue))
         } else {
             removeItem()
         }
@@ -55,7 +50,7 @@ const Item = ({value, idELem, id}) => {
                 {
                     edit ? <input style={{width: "100%"}} onInput={onInput} id="item-input" type="text" defaultValue={value.title} /> : <div>{value.title}</div>
                 }
-                { value.body && <NavLink itemId={id} /> }
+                { value.body && <NavLink itemId={idELem} /> }
             </div>
             <div className="icons">
                 <ChangeElements/>

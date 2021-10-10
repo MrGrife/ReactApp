@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react'
-import MyButton from "../buttonComponent/MyButton"
+import MyButton from "../UI/buttonComponent/MyButton"
 import PopupWindow from '../popupWindow/PopupWindow'
 
 import "./style.css"

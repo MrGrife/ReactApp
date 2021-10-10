@@ -8,6 +8,4 @@ const useInput = () => {
     return {inputValue, onInput, setValue}
 }
 
-export {
-    useInput
-}
+export default useInput

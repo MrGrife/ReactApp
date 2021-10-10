@@ -1,34 +1,63 @@
-const getPosts = (limit = 5, page = 1) => {
-    const _url = `https://jsonplaceholder.typicode.com/`
+import axios from 'axios';
 
-    return (dispatch, getState) => {
-        if(getState().itemList.length === 0) {
-            fetch(`${_url}posts?_limit=${limit}&_page=${page}`)
-                .then(response => response.json())
-                .then(itemList => dispatch({type: "GET_POSTS", itemList: itemList}))
-                .catch(error => dispatch({type: "ERROR"}))
-        }
+const _url = `http://localhost:3000/posts`
+
+const getAllPosts = () => {
+    return dispatch => {
+        axios.get(_url)
+            .then(response => dispatch({type: "GET_ALL_POSTS", totalPosts: response.data.length}),
+            () => dispatch({type: "ERROR"}))
     }
 }
 
+const getPosts = (page = 1) => {
+    return dispatch => {
+        axios.get(_url, {
+            params: {
+                _limit: 10,
+                _page: page
+            }
+        })
+            .then(response => dispatch({type: "GET_POSTS", response: response.data}),
+            () => dispatch({type: "ERROR"}))
+            .finally(() => dispatch({type: "LOADING"}))
+    }
+}
+
+
 const postData = (title, description) => {
     return dispatch => {
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            body: JSON.stringify({
-                title: title,
-                body: description,
-            }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
+        axios.post(_url, {
+            title: title,
+            body: description
         })
-        .then(response => response.json())
-        .then(newItem => dispatch({type: "POST", newItem: newItem}))
+        .then(newItem => {
+            dispatch({type: "POST", newItem: newItem.data})
+        })
+    }
+}
+
+const changePost = (id, inputValue) => {
+    return dispatch => {
+        axios.patch(`${_url}/${id}`, { title: inputValue })
+            .then(() => dispatch({type: "CHANGE_VALUE_ELEMENT", index: id, value: inputValue}))
+    }
+} 
+
+const deletePost = (itemList, id) => {
+    return dispatch => {
+        axios.delete(`${_url}/${id}`)
+            .then(() => {
+                const newItemList = itemList.filter(item => item.id !== id)
+                return dispatch({type: "DELETE", newItemList: newItemList})
+            })
     }
 }
 
 export {
     getPosts,
-    postData
+    postData,
+    getAllPosts,
+    changePost,
+    deletePost
 }

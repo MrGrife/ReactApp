@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from 'react-dom'
 import App from "./App"
 import { BrowserRouter as Router, Route, Switch }from "react-router-dom";
-import store from './components/store'
+import store from './store'
 import { Provider } from 'react-redux'
 import Post from "./components/pages/Post"
 import ErrorPage from "./components/pages/ErrorPage"
