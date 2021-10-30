@@ -1,10 +1,7 @@
-const randomId = () => {
-  return Math.floor(Math.random() * 1000)
-}
-
 const data = {
   totalPosts: 0,
   itemList: [],
+  page: 1,
   error: false,
   loading: true
 }
@@ -19,13 +16,13 @@ const reducer = (state = data, action) => {
     case "GET_POSTS":
       return {
         ...state,
-        itemList: [...state.itemList, ...action.response],
+        itemList: action.response,
         loading: true
       }
     case "POST":
       return {
         ...state,
-        itemList: [{...action.newItem, id: randomId()}, ...state.itemList]
+        itemList: [...state.itemList]
       }
       case "DELETE":
         return {

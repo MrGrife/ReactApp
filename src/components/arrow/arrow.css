@@ -1,0 +1,8 @@
+.arrow {
+    font-size: 40px;
+    
+}
+
+.arrow:hover {
+    opacity: 1;
+}

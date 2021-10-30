@@ -4,8 +4,8 @@ const _url = `http://localhost:3000/posts`
 
 const getAllPosts = () => {
     return dispatch => {
-        axios.get(_url)
-            .then(response => dispatch({type: "GET_ALL_POSTS", totalPosts: response.data.length}),
+        axios.get("http://localhost:3000/totalPosts")
+            .then(response => dispatch({type: "GET_ALL_POSTS", totalPosts: response.data.count}),
             () => dispatch({type: "ERROR"}))
     }
 }
@@ -18,14 +18,17 @@ const getPosts = (page = 1) => {
                 _page: page
             }
         })
-            .then(response => dispatch({type: "GET_POSTS", response: response.data}),
-            () => dispatch({type: "ERROR"}))
+            .then(response => 
+                dispatch({type: "GET_POSTS", response: response.data}),
+                () => dispatch({type: "ERROR"}))
             .finally(() => dispatch({type: "LOADING"}))
     }
 }
 
-
-const postData = (title, description) => {
+const postData = (title, description, totalPosts) => {
+    axios.patch("http://localhost:3000/totalPosts", {
+        count: totalPosts + 1
+    })
     return dispatch => {
         axios.post(_url, {
             title: title,
@@ -44,7 +47,10 @@ const changePost = (id, inputValue) => {
     }
 } 
 
-const deletePost = (itemList, id) => {
+const deletePost = (itemList, id, totalPosts) => {
+    axios.patch("http://localhost:3000/totalPosts", {
+        count: totalPosts - 1
+    })
     return dispatch => {
         axios.delete(`${_url}/${id}`)
             .then(() => {

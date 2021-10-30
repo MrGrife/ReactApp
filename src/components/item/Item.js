@@ -11,10 +11,10 @@ const Item = ({value, idELem}) => {
     const dispatch = useDispatch()
     const { inputValue, onInput, setValue } = useInput()
     const [edit, setEdit] = useState(false)
-    const { itemList } = useSelector(state => state)
+    const { itemList, totalPosts } = useSelector(state => state)
 
     const removeItem = () => {
-        dispatch(deletePost(itemList, idELem))
+        dispatch(deletePost(itemList, idELem, totalPosts))
     }
 
     const changeItem = () => {

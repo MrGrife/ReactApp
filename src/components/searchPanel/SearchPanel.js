@@ -1,7 +1,7 @@
 import React from 'react'
 import MyInput from '../UI/inputComponent/MyInput'
 
-const SearchPanel = ({ value, setValue }) => {
+const SearchPanel = ({ value, setValue}) => {
     return (
         <div style={{display: "flex"}}>
             <MyInput

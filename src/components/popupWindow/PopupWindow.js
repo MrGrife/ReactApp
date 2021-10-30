@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form, Input } from 'antd';
 import { PoweroffOutlined } from '@ant-design/icons';
 import { CSSTransition } from 'react-transition-group';
@@ -8,6 +8,7 @@ import { postData } from '../../services/services'
 import "./style.css"
 
 const PopupWindow = ({modalActive, setModalActive}) => {
+    const { totalPosts } = useSelector(state => state)
     const dispatch = useDispatch()
     const [loading, setLoading] = useState(false)
     const buttonForm = useRef()
@@ -15,7 +16,7 @@ const PopupWindow = ({modalActive, setModalActive}) => {
 
     const sendData = (data) => {
         setLoading(true)
-        dispatch(postData(data.title, data.description))
+        dispatch(postData(data.title, data.description, totalPosts))
         setModalActive(false)
         form.resetFields()
         setLoading(false)
